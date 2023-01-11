@@ -1,23 +1,25 @@
-<h1>{{ .Title }}</h1>
+{{ define "main" }}
+  <article>
+    {{ .Content }}
+  </article>
 
-{{ .Content }}
+  {{ with .Site.Menus.tabulas }}
+  <h3> Tabulas </h3>
+  <ul> 
+    {{ range . }}
+      <li>
+          <a href ="{{ .URL }}">{{ .Title }}</a>
+          {{ with $.Site.GetPage .URL }}
+            <p> Description: {{ .Description }} </p>
 
-{{ with .Site.Menus.tabulas }}
-<h3> Tabulas </h3>
-<ul> 
-  {{ range . }}
-    <li>
-        <a href ="{{ .URL }}">{{ .Title }}</a>
-        {{ with $.Site.GetPage .URL }}
-          <p> Description: {{ .Description }} </p>
-
-          <p> Authors: 
-            {{ $last := (sub (len .Params.Authors ) 1) }}
-            {{ range $i, $author := .Params.Authors}} 
-              {{ $author }}{{ if lt $i $last }}, {{ end }}
-              {{ end }} </p>
-        {{ end }}
-    </li>
+            <p> Authors: 
+              {{ $last := (sub (len .Params.Authors ) 1) }}
+              {{ range $i, $author := .Params.Authors}} 
+                {{ $author }}{{ if lt $i $last }}, {{ end }}
+                {{ end }} </p>
+          {{ end }}
+      </li>
+    {{ end }}
+  </ul>
   {{ end }}
-</ul>
 {{ end }}

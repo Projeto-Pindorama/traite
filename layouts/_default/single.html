@@ -1,13 +1,15 @@
-<aside> 
-  {{ $section := (where .Site.Pages "Section" .Section) }}
+{{ define "main" }}
+  <aside> 
+    {{ $section := (where .Site.Pages "Section" .Section) }}
 
-  {{ range $section }}
-   {{ range .Pages }}
-     <a href="{{ .Permalink }}">{{ .Title }}</a>
-   {{ end }}
-  {{ end }}
-</aside>
+    {{ range $section }}
+     {{ range .Pages }}
+       <a href="{{ .Permalink }}">{{ .Title }}</a>
+     {{ end }}
+    {{ end }}
+  </aside>
 
-<h1> {{ .Title }} </h1>
+  <h1> {{ .Title }} </h1>
 
-<article> {{ .Content }} </article>
+  <article> {{ .Content }} </article>
+{{ end }}
