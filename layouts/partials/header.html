@@ -1,1 +1,16 @@
-<header>silicon tabula</header>
+<header>
+  <h1>Silicon Tabula</h1>
+</header>
+
+{{ with .Site.Menus.tabulas }}
+  <nav> 
+    <ul> 
+      {{ range . }}
+        <li>
+          <a href="{{ .URL }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}
+
