@@ -1,15 +1,23 @@
 {{ define "main" }}
-  <aside> 
-    {{ $section := (where .Site.Pages "Section" .Section) }}
+  <div class="content-container">
+    <aside> 
+      {{ $section := (where .Site.Pages "Section" .Section) }}
 
-    {{ range $section }}
-     {{ range .Pages }}
-       <a href="{{ .Permalink }}">{{ .Title }}</a>
-     {{ end }}
-    {{ end }}
-  </aside>
+      {{ range $section }}
+       <ul>
+         {{ range .Pages }}
+            <li>
+              <a href="{{ .Permalink }}" 
+                 class="{{ if eq .Title $.Title}} selected {{ end}}">{{ .Title }}</a>
+            </li>
+         {{ end }}
+      {{ end }}
+      </ul>
+    </aside>
 
-  <h1> {{ .Title }} </h1>
-
-  <article> {{ .Content }} </article>
+    <article> 
+        <h1> {{ .Title }} </h1>
+        {{ .Content }} 
+    </article>
+  </div>
 {{ end }}

@@ -1,2 +1,6 @@
 <meta charset="UTF-8">
+
+{{ $css := resources.Get "/css/style.css"}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
 <title> {{ default $.Title .Title }} </title>
