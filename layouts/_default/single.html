@@ -1,23 +1,29 @@
 {{ define "main" }}
+  <div class="toggle-chapters">
+    {{ $hamburguer := resources.Get "images/hamburguer.svg"}}
+    <img src="{{ $hamburguer.RelPermalink }}">
+  </div>
+    
   <div class="content-container">
-    <aside> 
+    <aside class="hide-on-mobile"> 
       {{ $section := (where .Site.Pages "Section" .Section) }}
 
       {{ range $section }}
        <ul>
          {{ range .Pages }}
-            <li>
-              <a href="{{ .Permalink }}" 
-                 class="{{ if eq .Title $.Title}} selected {{ end}}">{{ .Title }}</a>
-            </li>
+            <a href="{{ .Permalink }}" class="{{ if eq .Title $.Title }}selected{{ end }}">
+              <li>
+                {{ .Title }}
+              </li>
+            </a>
          {{ end }}
       {{ end }}
       </ul>
     </aside>
 
     <article> 
-        <h1> {{ .Title }} </h1>
-        {{ .Content }} 
+      <h1> {{ .Title }} </h1>
+      {{ .Content }} 
     </article>
   </div>
 {{ end }}

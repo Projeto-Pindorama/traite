@@ -1,6 +1,6 @@
 :root {
-  font-size: 16px;
-  font-family: sans;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 
 body {
@@ -8,8 +8,30 @@ body {
   color: #121212;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Antic Didone";
+}
+
+p, li {
+  font-family: "EB Garamond";
+}
+
+p {
+  font-size: 1.25rem;
+}
+
 a {
   text-decoration: none;
+  font-family: sans-serif;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: scroll;
+}
+
+code {
+  font-family: 'Courier Prime';
 }
 
 header {
@@ -19,6 +41,7 @@ header {
 
 nav {
   width: 100%;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -31,14 +54,6 @@ main {
   max-width: 60rem;
 }
 
-footer {
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  margin: 1rem;
-}
-
 .content-container {
   display: flex;
   flex-direction: row;
@@ -48,17 +63,64 @@ footer {
 
 .content-container article {
   width: 80%;
+
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 .content-container aside {
-  width: 20%;
+  width: auto;
+}
+
+.content-container aside ul {
+  list-style: none;
+  position: sticky;
+  top: 4rem;
+  width: auto;
+  padding: 0;
+  margin-right: 1rem;
 }
 
 .content-container aside ul li {
-  margin: 0.5rem;
+  padding: 0.5rem;
+  color: #666666;
+  font-family: sans-serif;
+  padding: 0.5rem 1rem;
 }
 
 .selected {
-  background-color: blue;
-  color: white;
+  display: block;
+  color: #666666;
+  background-color: #EEEEEE;
+}
+
+.hide-on-mobile {
+  display: auto;
+}
+.hide-on-desktop {
+  display: none;
+}
+
+.toggle-chapters {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0.25rem;
+}
+
+ @media screen and (max-width: 800px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  .hide-on-desktop {
+    display: auto;
+  }
+
+  .content-container aside {
+    width: 50%;
+  }
+
+  .content-container ul {
+    margin-left: -0.35rem;
+  }
 }
